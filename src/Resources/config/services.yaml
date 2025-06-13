@@ -1,0 +1,21 @@
+services:
+  # default configuration for services in *this* file
+  _defaults:
+    autowire: true      # Automatically injects dependencies in your services.
+    autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+  Tourze\DoctrineORMSessionBundle\Command\:
+    resource: '../../Command/'
+  Tourze\DoctrineORMSessionBundle\Repository\:
+    resource: '../../Repository/'
+
+  # Session Handler
+  Tourze\DoctrineORMSessionBundle\Handler\DoctrineSessionHandler:
+    arguments:
+      $defaultLifetime: '%tourze_doctrine_orm_session.lifetime%'
+    tags:
+      - { name: 'session.handler', alias: 'doctrine_orm' }
+  # Alias for autowiring
+  doctrine_orm_session.handler:
+    alias: Tourze\DoctrineORMSessionBundle\Handler\DoctrineSessionHandler
+    public: true
