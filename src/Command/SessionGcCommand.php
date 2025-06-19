@@ -12,11 +12,12 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use Tourze\DoctrineORMSessionBundle\Repository\SessionRepository;
 
 #[AsCommand(
-    name: 'doctrine:session:gc',
+    name: self::NAME,
     description: '清理过期的 session 记录',
 )]
 class SessionGcCommand extends Command
 {
+    private const NAME = 'doctrine:session:gc';
     public function __construct(
         private readonly SessionRepository $sessionRepository
     ) {
