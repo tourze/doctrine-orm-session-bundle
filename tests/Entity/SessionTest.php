@@ -88,10 +88,9 @@ class SessionTest extends TestCase
         
         // 默认生命周期应该是 1440 秒（24分钟）
         $expectedExpiry = $session->getCreatedAt()->modify('+1440 seconds');
-        $this->assertEquals(
+        $this->assertEqualsWithDelta(
             $expectedExpiry->getTimestamp(),
             $session->getExpiresAt()->getTimestamp(),
-            '',
             1 // 允许1秒误差
         );
     }
@@ -106,10 +105,9 @@ class SessionTest extends TestCase
         );
         
         $expectedExpiry = $session->getCreatedAt()->modify("+{$customLifetime} seconds");
-        $this->assertEquals(
+        $this->assertEqualsWithDelta(
             $expectedExpiry->getTimestamp(),
             $session->getExpiresAt()->getTimestamp(),
-            '',
             1 // 允许1秒误差
         );
     }

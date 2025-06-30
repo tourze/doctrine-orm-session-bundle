@@ -10,7 +10,7 @@ use Tourze\DoctrineORMSessionBundle\Entity\Session;
 
 /**
  * @extends ServiceEntityRepository<Session>
- * 
+ *
  * @method Session|null find($id, $lockMode = null, $lockVersion = null)
  * @method Session|null findOneBy(array $criteria, array $orderBy = null)
  * @method Session[]    findAll()
